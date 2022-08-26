@@ -15,8 +15,11 @@ class AddressController extends Controller
      */
     public function index()
     {
-        $address = Address::with(['user'])->get();
-        return response()->json($address);
+        $addresses = Address::with(['user'])->get();
+        $addresses->map(function ($address){
+            unset($address['user_id']);
+        });
+        return response()->json($addresses);
     }
 
     /**
@@ -59,6 +62,7 @@ class AddressController extends Controller
     public function show(Address $address)
     {
         $address->load(['user']);
+        unset($address->user_id);
         return response()->json($address);
     }
 
