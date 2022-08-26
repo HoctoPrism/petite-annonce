@@ -19,14 +19,11 @@ class ImageController extends Controller
      */
     public function index(): JsonResponse
     {
-        $images = DB::table('images')
-            ->get()
-            ->toArray();
-
-        return response()->json([
-            'status' => 'Success',
-            'data' => $images
-        ]);
+        $images = Image::with(['annonce'])->get();
+        $images->map(function ($image){
+            unset($image['annonce_id']);
+        });
+        return response()->json($images);
     }
 
     /**
@@ -68,6 +65,8 @@ class ImageController extends Controller
      */
     public function show(Image $image): JsonResponse
     {
+        $image->load(['annonce']);
+        unset($image->annonce_id);
         return response()->json($image);
     }
 
