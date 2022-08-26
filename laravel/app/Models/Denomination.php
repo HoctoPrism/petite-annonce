@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Denomination extends Model
 {
     use HasFactory;
-    protected $fillable = ['name_denomination'];
+    protected $fillable = ['name_denomination', 'category_id'];
 
     public function category()
     {

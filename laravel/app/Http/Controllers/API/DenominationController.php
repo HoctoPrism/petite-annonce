@@ -35,7 +35,7 @@ class DenominationController extends Controller
             'name_denomination' => 'required|max:100',
         ]);
         $denomination = Denomination::create([
-            'category_denomination' => $request->category_denomination,
+            'name_denomination' => $request->name_denomination,
             'category_id' => $request->category_id,
         ]);
         return response()->json(['status' => 'Success', 'data' => $denomination]);
