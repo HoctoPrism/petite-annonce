@@ -15,9 +15,7 @@ class AddressController extends Controller
      */
     public function index()
     {
-        // On récupère tous les utilisateurs
-        $address = Address::all();
-        // On retourne les informations des utilisateurs en JSON
+        $address = Address::with(['user'])->get();
         return response()->json($address);
     }
 
@@ -60,8 +58,8 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        // On retourne les informations de l'utilisateur en JSON
-        return response()->json($$address);
+        $address->load(['user']);
+        return response()->json($address);
     }
 
     /**
