@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\AnnonceController;
+use App\Http\Controllers\API\ImageController;
+use App\Http\Controllers\API\PackageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\UserController;
@@ -27,5 +30,7 @@ Route::apiResource("denominations", DenominationController::class);
 Route::apiResource("brands", BrandController::class);
 Route::apiResource("addresses", AddressController::class);
 Route::apiResource("users", UserController::class);
-
+Route::apiResource("images", ImageController::class);
+Route::apiResource("packages", PackageController::class);
+Route::apiResource("annonces", AnnonceController::class);
 
