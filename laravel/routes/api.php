@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\API\CategoryController;
-use App\Http\Controllers\API\DenominationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\BrandController;
+use App\Http\Controllers\API\AddressController;
+use App\Http\Controllers\API\CategoryController;
+use App\Http\Controllers\API\DenominationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +24,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::apiResource("categories", CategoryController::class);
 Route::apiResource("denominations", DenominationController::class);
+Route::apiResource("brands", BrandController::class);
+Route::apiResource("addresses", AddressController::class);
+Route::apiResource("users", UserController::class);
+
+
