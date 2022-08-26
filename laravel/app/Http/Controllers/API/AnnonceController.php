@@ -16,7 +16,15 @@ class AnnonceController extends Controller
      */
     public function index()
     {
-        $annonces = Annonce::all();
+        $annonces= Annonce::with(['user' , 'package', 'brand' , 'category'])->get();
+        $annonces->map(function ($annonce){
+            unset($annonce['user_id']);
+            unset($annonce['package_id']);
+            unset($annonce['brand_id']);
+            unset($annonce['category_id']);
+
+        });
+
         return response()->json($annonces);
     }
 
@@ -62,6 +70,14 @@ class AnnonceController extends Controller
      */
     public function show(Annonce $annonce)
     {
+        $annonce->load(['user']);
+        $annonce->load(['package']);
+        $annonce->load(['category']);
+        $annonce->load(['brand']);
+        unset($annonce->user_id);
+        unset($annonce->package_id);
+        unset($annonce->category_id);
+        unset($annonce->brand_id);
         return response()->json($annonce);
     }
 
