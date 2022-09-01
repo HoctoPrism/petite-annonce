@@ -19,9 +19,11 @@ import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 import App from './App';
 import Home from "./component/home/home";
 import Type from "./component/type/type";
-import Brand from "./component/brand/brand";
 import {Navbar} from "./component/_partials/_navbar/_navbar";
 import {Footer} from "./component/_partials/_footer/_footer";
+import Login from './services/auth/login';
+import Logout from './services/auth/logout';
+
 import Register from "./services/auth/register";
 
 function CustomTheme() {
@@ -58,6 +60,10 @@ function CustomTheme() {
             <BrowserRouter>
                 <Routes>
                     <Route exact path="/" element={<RouteService Component={Home}/>}>Accueil</Route>
+                    <Route exact path="login" element={<RouteService Component={Login}/>}>Login</Route>
+                    <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
+
+
                     {/*<Route exact path="type" element={<RouteService Component={Type}/>}>Type</Route>*/}
                     <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
                     <Route path="*" element={
