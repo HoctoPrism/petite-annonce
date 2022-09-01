@@ -25,6 +25,7 @@ import Login from './services/auth/login';
 import Logout from './services/auth/logout';
 
 import Register from "./services/auth/register";
+import Package from "./component/package/package";
 
 function CustomTheme() {
 
@@ -62,10 +63,8 @@ function CustomTheme() {
                     <Route exact path="/" element={<RouteService Component={Home}/>}>Accueil</Route>
                     <Route exact path="login" element={<RouteService Component={Login}/>}>Login</Route>
                     <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
-
-
-                    {/*<Route exact path="type" element={<RouteService Component={Type}/>}>Type</Route>*/}
                     <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
+                    <Route exact path="package" element={<RouteService Component={Package}/>}>Package</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>
