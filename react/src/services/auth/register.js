@@ -9,7 +9,7 @@ import {
     Grid,
     IconButton, Input,
     InputAdornment,
-    InputLabel,
+    InputLabel, Snackbar,
     TextField,
     Typography
 } from "@mui/material";
@@ -32,7 +32,7 @@ function Register () {
     const firstname = watch('firstname', "");
 
     const [showPassword, setShowPassword] = useState(false);
-    const [setShowToast] = useState(false);
+    const [toast , setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState({});
     const [errMessage, setErrMessage] = useState("");
     const onSubmit = e => registerForm();
@@ -97,6 +97,7 @@ function Register () {
                 navigate('/', { replace: true });
             } else {
                 setToastMessage({message: "Une erreur est survenue", severity: "error"});
+                setShowToast(true);
             }
         } catch (err) {
             console.log(err);
@@ -273,6 +274,16 @@ function Register () {
                 <Button type="submit" disabled={!isDirty || !isValid} variant="contained" sx={{m: 8}}>VALIDER</Button>
             </Grid>
         </form>
+        <Snackbar
+            open={toast}
+            autoHideDuration={3000}
+            onClose={() => setShowToast(false)}
+            anchorOrigin={{vertical: 'bottom', horizontal: 'center'}}
+        >
+            <Alert onClose={() => setShowToast(false)} severity={toastMessage.severity} sx={{width: '100%'}}>
+                {toastMessage.message}
+            </Alert>
+        </Snackbar>
     </Box>
 }
 
