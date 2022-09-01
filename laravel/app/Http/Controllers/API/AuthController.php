@@ -20,7 +20,15 @@ class AuthController extends Controller
         $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
-        ]);
+
+        ],
+        [
+            'email.email' => 'Ce champ attend un donnée de type email',
+            'email.required' => 'Ce champ est requis',
+            'password.required' => 'Ce champ est requis',
+            'password.string' => 'Ce champ attend un donnée de type text'
+        ]
+    );
         $credentials = $request->only('email', 'password');
 
         $token = Auth::attempt($credentials);
@@ -49,7 +57,21 @@ class AuthController extends Controller
             'username' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6'
-        ]);
+        ],
+        [
+            'lastname.required' => 'Ce champ est requis',
+            'lastname.string' => 'Ce champ attend un donnée de type text',
+            'firstname.required' => 'Ce champ est requis',
+            'firstname.string' => 'Ce champ attend un donnée de type text',
+            'username.required' => 'Ce champ est requis',
+            'username.string' => 'Ce champ attend un donnée de type text',
+            'email.email' => 'Ce champ attend un donnée de type email',
+            'email.required' => 'Ce champ est requis',
+            'email.unique' => 'Ce mail est déja utilisé',
+            'password.required' => 'Ce champ est requis',
+            'password.string' => 'Ce champ attend un donnée de type text'
+        ]
+    );
 
         if (empty($request->roles)){
             $request->roles = json_encode(["ROLE_USER"]);
