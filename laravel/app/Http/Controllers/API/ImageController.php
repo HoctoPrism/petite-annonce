@@ -23,7 +23,10 @@ class ImageController extends Controller
         $images->map(function ($image){
             unset($image['annonce_id']);
         });
-        return response()->json($images);
+        return response()->json([
+            'status' => 'Success',
+            'data' => $images
+        ]);
     }
 
     /**
@@ -50,6 +53,8 @@ class ImageController extends Controller
             'url' => $filename,
             'annonce_id' => $request->annonce_id
         ]);
+
+        $image->annonce = $image->annonce()->get()[0];
 
         return response()->json([
             'status' => 'Success',
@@ -102,8 +107,11 @@ class ImageController extends Controller
             'annonce_id' => $request->annonce_id
         ]);
 
+        $image->annonce = $image->annonce()->get()[0];
+
         return response()->json([
-            'status' => 'Mise à jour avec success'
+            'status' => 'Mise à jour avec success',
+            'data' => $image,
         ]);
     }
 

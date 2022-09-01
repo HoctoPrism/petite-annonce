@@ -25,7 +25,10 @@ class AnnonceController extends Controller
 
         });
 
-        return response()->json($annonces);
+        return response()->json([
+            'status' => 'Success',
+            'data' => $annonces
+        ]);
     }
 
     /**
@@ -111,7 +114,8 @@ class AnnonceController extends Controller
             'user_id' => $request->user_id,
         ]);
         return response()->json([
-            'status' => 'Mise à jour avec succèss'
+            'status' => 'Mise à jour avec succèss',
+            'data' => $annonce
         ]);
     }
 
