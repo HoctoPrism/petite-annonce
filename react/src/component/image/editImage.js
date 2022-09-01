@@ -41,8 +41,8 @@ function EditImage(props) {
         try {
 
             let formData = new FormData();
-            formData.append("url", url);
-            formData.append("annonce_id", '1');
+            formData.append("url", url ? url : props.updateValue.url);
+            formData.append("annonce_id",  annonce_id ? `${annonce_id}` : `${props.updateValue.annonce.id}`);
             formData.append("_method", 'PATCH');
 
             let res = await axios.post("http://127.0.0.1:8000/api/images/" + oneImage.id, formData, {
