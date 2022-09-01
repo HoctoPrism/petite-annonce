@@ -26,6 +26,7 @@ import Logout from './services/auth/logout';
 
 import Register from "./services/auth/register";
 import Package from "./component/package/package";
+import Image from "./component/image/image";
 
 function CustomTheme() {
 
@@ -65,6 +66,7 @@ function CustomTheme() {
                     <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
                     <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
                     <Route exact path="package" element={<RouteService Component={Package}/>}>Package</Route>
+                    <Route exact path="image" element={<RouteService Component={Image}/>}>Image</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>
