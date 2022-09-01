@@ -4,7 +4,7 @@ import thunk from 'redux-thunk';
 
 export default configureStore({
   reducer: {
-    loggedIn: loginButtonSlice
+    loggedIn: loginButtonSlice.reducer
   },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunk)
 })
