@@ -51,7 +51,6 @@ function EditImage(props) {
             if (res.status === 200) {
                 const foundIndex = props.updateValue.data.findIndex(x => x.id === oneImage.id);
                 let tab = {};
-                console.log(res.data.data)
                 await Object.assign(tab, res.data.data);
                 let data = update(props.updateValue.data, {[foundIndex]: {$set: tab}})
                 props.handleDataChange(data, 'edit');
