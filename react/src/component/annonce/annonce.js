@@ -18,6 +18,7 @@ import DeleteAnnonce from "./deleteAnnonce";
 import NewAnnonce from "./newAnnonce";
 import EditAnnonce from "./editAnnonce";
 import axios from "axios";
+import AnnonceUser from "./displayUser";
 
 function Annonce() {
 
@@ -66,7 +67,7 @@ function Annonce() {
         }
     }
 
-    return <Container maxWidth="md" id="annonce">
+    return <Container maxWidth="xl" id="annonce">
         <Paper sx={{display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column', py: 10}}>
             <Typography variant="h3" sx={{textAlign: "center"}} gutterBottom>Annonces</Typography>
             {loading ? (
@@ -80,19 +81,35 @@ function Annonce() {
                                 <TableRow>
                                     <TableCell key={1}>ID</TableCell>
                                     <TableCell key={2}>Nom</TableCell>
-                                    <TableCell key={3} align={'right'}>Actions</TableCell>
+                                    <TableCell key={3}>Description</TableCell>
+                                    <TableCell key={4}>Price</TableCell>
+                                    <TableCell key={5}>Contenance</TableCell>
+                                    <TableCell key={6}>Volume</TableCell>
+                                    <TableCell key={7}>Package</TableCell>
+                                    <TableCell key={8}>Marque</TableCell>
+                                    <TableCell key={9}>Categorie</TableCell>
+                                    <TableCell key={10}>Utilisateur</TableCell>
+                                    <TableCell key={11} align={'right'}>Actions</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(({id, name_annonce}) => {
+                                {data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(({id, name_annonce, description, price, contenance, volume, package_id, brand, category, user}) => {
                                     return (
                                         <TableRow hover role="checkbox" tabIndex={-1} key={name_annonce+id}>
                                             <TableCell>{id}</TableCell>
                                             <TableCell sx={{fontWeight: 'bold'}}>{name_annonce}</TableCell>
+                                            <TableCell>{description}</TableCell>
+                                            <TableCell>{price}</TableCell>
+                                            <TableCell>{contenance}</TableCell>
+                                            <TableCell>{volume}</TableCell>
+                                            <TableCell>{package_id ? package_id.name_package : '--'}</TableCell>
+                                            <TableCell>{brand ? brand.name_brand : '--'}</TableCell>
+                                            <TableCell>{category ? category.name_category : '--'}</TableCell>
+                                            <TableCell>{user ? <AnnonceUser display={{id, user}} /> : '--'}</TableCell>
                                             <TableCell>
                                                 <Box sx={{display: 'flex', justifyContent: 'right'}}>
-                                                    <EditAnnonce updateValue={{id, name_annonce, data}} handleDataChange={handleDataChange} />
-                                                    <DeleteAnnonce deleteValue={{id, name_annonce, data}} handleDataChange={handleDataChange}/>
+                                                    <EditAnnonce updateValue={{id, name_annonce, description, price, contenance, volume, package_id, brand, category, user, data}} handleDataChange={handleDataChange} />
+                                                    <DeleteAnnonce deleteValue={{id, name_annonce, description, price, contenance, volume, package_id, brand, category, user, data}} handleDataChange={handleDataChange}/>
                                                 </Box>
                                             </TableCell>
                                         </TableRow>

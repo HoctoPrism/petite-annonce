@@ -18,7 +18,6 @@ import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 
 import App from './App';
 import Home from "./component/home/home";
-import Type from "./component/type/type";
 import {Navbar} from "./component/_partials/_navbar/_navbar";
 import {Footer} from "./component/_partials/_footer/_footer";
 import Login from './services/auth/login';
@@ -29,6 +28,7 @@ import Image from "./component/image/image";
 import Brand from "./component/brand/brand";
 import Category from "./component/category/category";
 import Denomination from "./component/denomination/denomination";
+import Annonce from "./component/annonce/annonce";
 
 function CustomTheme() {
 
@@ -73,6 +73,7 @@ function CustomTheme() {
                     <Route exact path="denomination" element={<RouteService Component={Denomination}/>}>Denomination</Route>
                     <Route exact path="package" element={<RouteService Component={Package}/>}>Package</Route>
                     <Route exact path="image" element={<RouteService Component={Image}/>}>Image</Route>
+                    <Route exact path="annonce" element={<RouteService Component={Annonce}/>}>Annonce</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>
