@@ -66,7 +66,7 @@ class CategoryController extends Controller
         $category->update([
             'name_category' => $request->name_category,
         ]);
-        return response()->json(['status' => 'Mis à jour avec succèss']);
+        return response()->json(['status' => 'Success', 'data' => $category]);
     }
 
     /**

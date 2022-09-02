@@ -16,9 +16,9 @@ class BrandController extends Controller
     public function index()
     {
         // On récupère tous les utilisateurs
-        $brand = Brand::all();
+        $brands = Brand::all();
         // On retourne les informations des utilisateurs en JSON
-        return response()->json($brand);
+        return response()->json(['status' => 'Success', 'data' => $brands]);
     }
 
     /**
@@ -75,9 +75,7 @@ class BrandController extends Controller
 
         ]);
         // On retourne les informations du nouvel utilisateur en JSON
-        return response()->json([
-            'status' => 'Mise à jour avec succèss'
-        ]);
+        return response()->json(['status' => 'Success', 'data' => $brand]);
     }
 
     /**
