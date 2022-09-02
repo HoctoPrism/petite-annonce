@@ -1,10 +1,14 @@
 import React from "react";
 import {Box, Container, Typography} from "@mui/material";
+import token from '../../services/auth/token';
 
 
 function Home() {
 
     document.title = 'Page d\'accueil'
+    if (token.getRoles() === "ROLE_ADMIN"){
+        console.log(token.getEmail())
+    }
 
     return <Container maxWidth="lg" id='home'>
         <Box>
