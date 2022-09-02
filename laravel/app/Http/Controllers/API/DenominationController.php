@@ -40,6 +40,7 @@ class DenominationController extends Controller
             'name_denomination' => $request->name_denomination,
             'category_id' => $request->category_id,
         ]);
+        $denomination->category = $denomination->category()->get()[0];
         return response()->json(['status' => 'Success', 'data' => $denomination]);
     }
 
@@ -73,7 +74,8 @@ class DenominationController extends Controller
             'name_denomination' => $request->name_denomination,
             'category_id' => $request->category_id,
         ]);
-        return response()->json(['status' => 'Mis à jour avec succèss']);
+        $denomination->category = $denomination->category()->get()[0];
+        return response()->json(['status' => 'Success', 'data' => $denomination]);
     }
 
     /**

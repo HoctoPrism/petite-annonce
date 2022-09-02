@@ -17,6 +17,9 @@ export function Navbar() {
                     <Button color="secondary" href='/'>Accueil</Button>
                     <Button color="secondary" href='package'>Package</Button>
                     <Button color="secondary" href='image'>Image</Button>
+                    <Button color="secondary" href='/brand'>Marques</Button>
+                    <Button color="secondary" href='/denomination'>Appellations</Button>
+                    <Button color="secondary" href='/category'>Categories</Button>
                     <LoginButton />
                     <SwitchModeButton/>
                 </Box>

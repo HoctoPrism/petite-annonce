@@ -23,10 +23,12 @@ import {Navbar} from "./component/_partials/_navbar/_navbar";
 import {Footer} from "./component/_partials/_footer/_footer";
 import Login from './services/auth/login';
 import Logout from './services/auth/logout';
-
 import Register from "./services/auth/register";
 import Package from "./component/package/package";
 import Image from "./component/image/image";
+import Brand from "./component/brand/brand";
+import Category from "./component/category/category";
+import Denomination from "./component/denomination/denomination";
 
 function CustomTheme() {
 
@@ -63,8 +65,12 @@ function CustomTheme() {
                 <Routes>
                     <Route exact path="/" element={<RouteService Component={Home}/>}>Accueil</Route>
                     <Route exact path="login" element={<RouteService Component={Login}/>}>Login</Route>
-                    <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
                     <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
+                    <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
+
+                    <Route exact path="brand" element={<RouteService Component={Brand}/>}>Marque</Route>
+                    <Route exact path="category" element={<RouteService Component={Category}/>}>Categorie</Route>
+                    <Route exact path="denomination" element={<RouteService Component={Denomination}/>}>Denomination</Route>
                     <Route exact path="package" element={<RouteService Component={Package}/>}>Package</Route>
                     <Route exact path="image" element={<RouteService Component={Image}/>}>Image</Route>
                     <Route path="*" element={
