@@ -15,6 +15,9 @@ export function Navbar() {
                 <Box sx={{m: 5, flexGrow: 1}} component="div">{document.title}</Box>
                 <Box className="navbar">
                     <Button color="secondary" href='/'>Accueil</Button>
+                    <Button color="secondary" href='address'>Adresses</Button>
+                    <Button color="secondary" href='user'>Users</Button>
+
                     <LoginButton />
                     <SwitchModeButton/>
                 </Box>
