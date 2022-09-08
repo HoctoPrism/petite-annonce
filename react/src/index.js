@@ -5,16 +5,13 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import './assets/css/component/_partials/_theme.scss';
 
-import {Provider} from 'react-redux';
-import store from './store'
-
-import RouteService from "./services/route/route-service";
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import auth from './services/auth/token'
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 
 import {lightTheme} from "./component/_partials/_theme/_lightTheme";
 import {darkTheme} from "./component/_partials/_theme/_darkTheme";
 import {ColorContext, setThemeToStorage} from "./component/_partials/_theme/_colorContext";
-import {createTheme, CssBaseline, ThemeProvider} from "@mui/material";
+import {Box, createTheme, CssBaseline, ThemeProvider} from "@mui/material";
 
 import App from './App';
 import Home from "./component/home/home";
@@ -29,8 +26,8 @@ import Brand from "./component/brand/brand";
 import Category from "./component/category/category";
 import Denomination from "./component/denomination/denomination";
 import Annonce from "./component/annonce/annonce";
-import Address from './component/addresses/address';
-import User from './component/Users/user';
+import Address from "./component/addresses/address";
+import User from "./component/Users/user";
 import OneAnnonce from "./component/annonce/oneAnnonce";
 
 
@@ -96,9 +93,7 @@ function CustomTheme() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <CustomTheme/>
-        </Provider>
+        <CustomTheme/>
     </React.StrictMode>
 );
 
