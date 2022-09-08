@@ -26,6 +26,8 @@ import Brand from "./component/brand/brand";
 import Category from "./component/category/category";
 import Denomination from "./component/denomination/denomination";
 import Annonce from "./component/annonce/annonce";
+import Address from "./component/addresses/address";
+import User from "./component/Users/user";
 
 function CustomTheme() {
 
@@ -71,6 +73,8 @@ function CustomTheme() {
                     <Route exact path="package" element={auth.loggedAndAdmin() ? <Package/> : <Home  adminMessage='unauthorizedRole'/>}>Package</Route>
                     <Route exact path="image" element={auth.loggedAndAdmin() ? <Image/> : <Home  adminMessage='unauthorizedRole'/>}>Image</Route>
                     <Route exact path="annonce" element={auth.loggedAndAdmin() ? <Annonce/> : <Home  adminMessage='unauthorizedRole'/>}>Annonce</Route>
+                    <Route exact path="address" element={auth.loggedAndAdmin() ? <Address/> : <Home  adminMessage='unauthorizedRole'/>}>Adresse</Route>
+                    <Route exact path="user" element={auth.loggedAndAdmin() ? <User/> : <Home  adminMessage='unauthorizedRole'/>}>Utilisateur</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>

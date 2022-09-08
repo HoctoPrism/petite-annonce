@@ -15,11 +15,16 @@ class BrandController extends Controller
      */
     public function index()
     {
-        // On récupère tous les utilisateurs
-        $brands = Brand::all();
-        // On retourne les informations des utilisateurs en JSON
-        return response()->json(['status' => 'Success', 'data' => $brands]);
+        $brand = Brand::table('brand')
+        ->get()
+        ->toArray();
+
+        return response()->json([
+            'status' => 'Success',
+            'data' => $brand
+        ]);
     }
+
 
     /**
      * Store a newly created resource in storage.
