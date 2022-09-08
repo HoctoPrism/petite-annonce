@@ -15,13 +15,11 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brand = Brand::table('brand')
-        ->get()
-        ->toArray();
+        $brands = Brand::all();
 
         return response()->json([
             'status' => 'Success',
-            'data' => $brand
+            'data' => $brands
         ]);
     }
 
