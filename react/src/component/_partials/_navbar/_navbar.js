@@ -15,6 +15,12 @@ export function Navbar() {
                 <Box sx={{m: 5, flexGrow: 1}} component="div">{document.title}</Box>
                 <Box className="navbar">
                     <Button color="secondary" href='/'>Accueil</Button>
+                    <Button color="secondary" href='package'>Package</Button>
+                    <Button color="secondary" href='image'>Image</Button>
+                    <Button color="secondary" href='brand'>Marques</Button>
+                    <Button color="secondary" href='denomination'>Appellations</Button>
+                    <Button color="secondary" href='category'>Categories</Button>
+                    <Button color="secondary" href='annonce'>Annonces</Button>
                     <Button color="secondary" href='address'>Adresses</Button>
                     <Button color="secondary" href='user'>Users</Button>
 

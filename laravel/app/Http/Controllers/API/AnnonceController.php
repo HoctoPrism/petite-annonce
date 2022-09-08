@@ -19,13 +19,16 @@ class AnnonceController extends Controller
         $annonces= Annonce::with(['user' , 'package', 'brand' , 'category'])->get();
         $annonces->map(function ($annonce){
             unset($annonce['user_id']);
-            unset($annonce['package_id']);
+            $annonce['package_id'] = $annonce['package'];
+            unset($annonce['package']);
             unset($annonce['brand_id']);
             unset($annonce['category_id']);
-
         });
 
-        return response()->json($annonces);
+        return response()->json([
+            'status' => 'Success',
+            'data' => $annonces
+        ]);
     }
 
     /**
@@ -56,6 +59,12 @@ class AnnonceController extends Controller
             'category_id' => $request->category_id,
             'user_id' => $request->user_id,
         ]);
+
+        $annonce->brand = $annonce->brand()->get()[0];
+        $annonce->category = $annonce->category()->get()[0];
+        $annonce->user = $annonce->user()->get()[0];
+        $annonce->package_id = $annonce->package()->get()[0];
+
         return response()->json([
             'status' => 'Success',
             'data' => $annonce,
@@ -110,8 +119,15 @@ class AnnonceController extends Controller
             'category_id' => $request->category_id,
             'user_id' => $request->user_id,
         ]);
+
+        $annonce->brand = $annonce->brand()->get()[0];
+        $annonce->category = $annonce->category()->get()[0];
+        $annonce->user = $annonce->user()->get()[0];
+        $annonce->package_id = $annonce->package()->get()[0];
+
         return response()->json([
-            'status' => 'Mise à jour avec succèss'
+            'status' => 'Mise à jour avec succèss',
+            'data' => $annonce
         ]);
     }
 

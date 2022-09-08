@@ -24,7 +24,7 @@ class BrandController extends Controller
             'data' => $brand
         ]);
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -80,9 +80,7 @@ class BrandController extends Controller
 
         ]);
         // On retourne les informations du nouvel utilisateur en JSON
-        return response()->json([
-            'status' => 'Mise à jour avec succèss'
-        ]);
+        return response()->json(['status' => 'Success', 'data' => $brand]);
     }
 
     /**
