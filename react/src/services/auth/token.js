@@ -14,7 +14,11 @@ let getDecodedToken = () => {
 
 let getExpiryTime = () => {
     // Check si le token est valide et n'a pas expiré
-    return !!(getDecodedToken() && !(getDecodedToken().exp * 1000 < Date.now()));
+    if (getDecodedToken() && !(getDecodedToken().exp * 1000 < Date.now())){
+        return true
+    } else {
+        return localStorage.removeItem('access_token')
+    }
 }
 
 let getRoles = () => {
