@@ -85,7 +85,7 @@ const handleClickShowPassword = () => {
         </Button>
       </Box>
       {errMessage ? <h4>{errMessage}</h4> : null}
-        <form onSubmit={handleSubmit(login)}>
+        <form onSubmit={handleSubmit(login)} onKeyDown={(e) => e.key === 'Enter' ? handleSubmit(login) : null}>
           <Grid
             container
             spacing={12}
