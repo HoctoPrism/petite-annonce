@@ -10,7 +10,6 @@ export function LogginButton() {
 
     useEffect(() => {
         if (tokenHere){
-            console.log('ouyi')
             setHref('logout')
             setMessage('DECONNEXION')
         }

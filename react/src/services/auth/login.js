@@ -20,11 +20,9 @@ function Login() {
     formState: { errors },
   } = useForm({ defaultValues: { email: "", password: "" } });
   const [toast, setShowToast] = useState(false);
-    const [toastMessage, setToastMessage] = useState({});
+  const [toastMessage, setToastMessage] = useState({});
+  const navigate = useNavigate();
 
-  let navigate = useNavigate();
-  let location = useLocation();
-  let from = location.pathname || "/"; //travail sur la redirection
   let login = async () => {
 
     try {
@@ -36,7 +34,7 @@ function Login() {
       });
       if (res.status === 200) {
           localStorage.setItem("access_token", res.data.token)
-          navigate('/', { replace: true });
+          navigate(-1);
       } else {
         setToastMessage({message: "Une erreur est survenue", severity: "error"});
         setShowToast(true);
