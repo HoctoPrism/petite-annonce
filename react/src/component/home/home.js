@@ -82,7 +82,7 @@ function Home(props) {
                         <Button size="small" color="secondary">
                                 <LocalPhoneIcon />
                             Contacter</Button>
-                        <Button size="small" color="secondary" className="secondary">
+                        <Button size="small" color="secondary" href={`annonce/${id}`}>
                                 <LoupeIcon />
                             Voir l'annonce</Button>
                     </CardActions>
