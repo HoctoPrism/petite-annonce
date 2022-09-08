@@ -16,6 +16,6 @@ export function LogginButton() {
     }, [tokenHere])
 
     return (
-        <Button href={href} color='secondary'>{message}</Button>
+        <Button href={href} color="primary" sx={{ color: 'primary.contrastText' }}>{message}</Button>
     )
 }

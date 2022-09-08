@@ -40,7 +40,7 @@ function EditPackage(props) {
     }
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}}
+          <Button color='secondary' variant='contained' sx={{mx: 2}}
             onClick={() => {
                 setShowEdit(true)
                 setOnePackage({id: props.updateValue.id, name_package: props.updateValue.name_package})

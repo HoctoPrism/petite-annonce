@@ -59,7 +59,7 @@ function EditAddress(props) {
     }
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}}
+          <Button color='secondary' variant='contained' sx={{mx: 2}}
             onClick={() => {
                 setShowEdit(true)
                 setOneAddress({id: props.updateValue.id, address: props.updateValue.address, user: props.updateValue.user})

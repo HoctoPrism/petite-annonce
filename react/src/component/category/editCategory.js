@@ -42,7 +42,7 @@ function EditCategory(props) {
     }
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}}
+          <Button color='secondary' variant='contained' sx={{mx: 2}}
             onClick={() => {
                 setShowEdit(true)
                 setOneCategory({id: props.updateValue.id, name_category: props.updateValue.name_category})

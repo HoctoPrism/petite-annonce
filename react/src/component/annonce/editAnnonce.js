@@ -90,7 +90,7 @@ function EditAnnonce(props) {
     }
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}}
+          <Button color='secondary' variant='contained' sx={{mx: 2}}
             onClick={ async () => {
                 await axios.get("http://127.0.0.1:8000/api/packages").then((actualData) => { setPackages(actualData.data.data) });
                 await axios.get("http://127.0.0.1:8000/api/categories").then((actualData) => { setCategories(actualData.data.data) });

@@ -79,10 +79,10 @@ function Home(props) {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">
+                        <Button size="small" color="secondary">
                                 <LocalPhoneIcon />
                             Contacter</Button>
-                        <Button size="small" className="secondary" href={`annonce/${id}`}>
+                        <Button size="small" color="secondary" href={`annonce/${id}`}>
                                 <LoupeIcon />
                             Voir l'annonce</Button>
                     </CardActions>

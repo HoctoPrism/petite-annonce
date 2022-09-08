@@ -7,7 +7,7 @@ function ImageAnnonce(props) {
     const [annonce, setShowAnnonce] = useState(false);
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}} onClick={() => { setShowAnnonce(true) }}> Voir </Button>
+          <Button color='secondary' variant='contained' sx={{mx: 2}} onClick={() => { setShowAnnonce(true) }}> Voir </Button>
           <Modal
             id="modal-crud-container"
             hideBackdrop
