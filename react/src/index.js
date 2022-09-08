@@ -31,6 +31,7 @@ import Denomination from "./component/denomination/denomination";
 import Annonce from "./component/annonce/annonce";
 import Address from './component/addresses/address';
 import User from './component/Users/user';
+import OneAnnonce from "./component/annonce/oneAnnonce";
 
 
 function CustomTheme() {
@@ -70,7 +71,6 @@ function CustomTheme() {
                     <Route exact path="login" element={<RouteService Component={Login}/>}>Login</Route>
                     <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
                     <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
-
                     <Route exact path="brand" element={<RouteService Component={Brand}/>}>Marque</Route>
                     <Route exact path="category" element={<RouteService Component={Category}/>}>Categorie</Route>
                     <Route exact path="denomination" element={<RouteService Component={Denomination}/>}>Denomination</Route>
@@ -78,6 +78,7 @@ function CustomTheme() {
                     <Route exact path="image" element={<RouteService Component={Image}/>}>Image</Route>
                     <Route exact path="annonce" element={<RouteService Component={Annonce}/>}>Annonce</Route>
                     <Route exact path="address" element={<RouteService Component={Address}/>}>Adresse</Route>
+                    <Route exact path="annonce/:id" element={<RouteService Component={OneAnnonce}/>}>OneAnnonce</Route>
                     <Route exact path="user" element={<RouteService Component={User}/>}>User</Route>
                     <Route path="*" element={
                         <div>

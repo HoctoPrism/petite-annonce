@@ -90,7 +90,7 @@ function Home() {
                         <Button size="small">
                                 <LocalPhoneIcon />
                             Contacter</Button>
-                        <Button size="small" className="secondary">
+                        <Button size="small" className="secondary" href={`annonce/${id}`}>
                                 <LoupeIcon />
                             Voir l'annonce</Button>
                     </CardActions>
