@@ -1,18 +1,18 @@
 import {Alert, Snackbar} from "@mui/material";
 import {useEffect, useState} from "react";
 
-let AdminMessage = (toaster) => {
+let AdminMessage = (props) => {
 
     const [toast, setShowToast] = useState(false);
     const [severityToast, setSeverityToast] = useState('');
     const [messageToast, setMessageToast] = useState('');
 
     useEffect(() => {
-        if (toaster.adminMessage === "unauthorizedRole"){
+        if (props.adminMessage === "unauthorizedRole"){
             setMessageToast('accès refusé');
             setSeverityToast('error');
             setShowToast(true);
-        } else if(toaster.adminMessage === "alreadyLogged"){
+        } else if(props.adminMessage === "alreadyLogged"){
             setMessageToast('Vous êtes déjà connecté');
             setSeverityToast('info');
             setShowToast(true);
@@ -34,4 +34,4 @@ let AdminMessage = (toaster) => {
     )
 }
 
-export default {AdminMessage}
+export default AdminMessage

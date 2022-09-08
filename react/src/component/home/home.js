@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import LoupeIcon from '@mui/icons-material/Loupe';
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
-import adminMessage from '../../services/auth/adminMessage'
+import AdminMessage from "../../services/auth/adminMessage";
 
 function Home(props) {
 
@@ -103,7 +103,7 @@ function Home(props) {
             </Box>
         )}
         {props.adminMessage ? (
-            <adminMessage.AdminMessage adminMessage={props.adminMessage}/>
+            <AdminMessage adminMessage={props.adminMessage}/>
         ) : null}
 </Container>
 
