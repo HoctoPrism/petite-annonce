@@ -7,7 +7,7 @@ function AnnonceUser(props) {
     const [annonce, setShowUser] = useState(false);
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}} onClick={() => { setShowUser(true) }}> Voir </Button>
+          <Button color='secondary' variant='contained' sx={{mx: 2}} onClick={() => { setShowUser(true) }}> Voir </Button>
           <Modal
             id="modal-crud-container"
             hideBackdrop

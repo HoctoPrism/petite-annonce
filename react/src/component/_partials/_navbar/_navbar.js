@@ -17,15 +17,15 @@ export function Navbar() {
                 <Box className="navbar">
                     {auth.loggedAndAdmin() ? (
                         <Box>
-                            <Button color="secondary" href='/'>Accueil</Button>
-                            <Button color="secondary" href='package'>Package</Button>
-                            <Button color="secondary" href='image'>Image</Button>
-                            <Button color="secondary" href='brand'>Marques</Button>
-                            <Button color="secondary" href='denomination'>Appellations</Button>
-                            <Button color="secondary" href='category'>Categories</Button>
-                            <Button color="secondary" href='annonce'>Annonces</Button>
-                            <Button color="secondary" href='address'>Adresses</Button>
-                            <Button color="secondary" href='user'>Users</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='/'>Accueil</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='package'>Package</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='image'>Image</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='brand'>Marques</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='denomination'>Appellations</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='category'>Categories</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='annonce'>Annonces</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='address'>Adresses</Button>
+                            <Button color="primary" sx={{ color: 'primary.contrastText' }} href='user'>Users</Button>
                         </Box>
                     ) : null }
                     <LogginButton/>

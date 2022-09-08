@@ -42,7 +42,7 @@ function EditBrand(props) {
     }
 
     return(<Box >
-          <Button color='info' variant='contained' sx={{mx: 2}}
+          <Button variant='contained' color='secondary' sx={{mx: 2}}
             onClick={() => {
                 setShowEdit(true)
                 setOneBrand({id: props.updateValue.id, name_brand: props.updateValue.name_brand})

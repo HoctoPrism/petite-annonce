@@ -20,16 +20,16 @@ export const lightTheme = {
     palette: {
         type: 'light',
         primary: {
-            main: '#d96161',
-            light: 'rgb(224, 128, 128)',
-            dark: 'rgb(151, 67, 67)',
-            contrastText: '#fff',
+          main: '#880e30',
+          light: 'rgb(159, 62, 89)',
+          dark: 'rgb(95, 9, 33)',
+          contrastText: '#fff',
         },
         secondary: {
-            main: '#f4cfd5',
-            light: 'rgb(246, 216, 221)',
-            dark: 'rgb(170, 144, 149)',
-            contrastText: 'rgba(0, 0, 0, 0.87)',
+          main: '#b39551',
+          light: 'rgb(194, 170, 115)',
+          dark: 'rgb(125, 104, 56)',
+          contrastText: 'rgba(0, 0, 0, 0.87)',
         },
         warning: {
             main: '#ff9800',
@@ -67,8 +67,8 @@ export const lightTheme = {
         },
         divider: 'rgba(255, 255, 255, 0.12)',
         background: {
-            default: '#f5f5f5',
-            paper: '#eceff1',
+          default: '#fffcfc',
+          paper: '#fff',
         },
         text: {
             primary: 'rgba(0,0,0,0.87)',
