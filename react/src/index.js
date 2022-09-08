@@ -30,7 +30,6 @@ import Address from "./component/addresses/address";
 import User from "./component/Users/user";
 import OneAnnonce from "./component/annonce/oneAnnonce";
 
-
 function CustomTheme() {
 
     const [mode, setMode] = React.useState("light");
@@ -57,6 +56,7 @@ function CustomTheme() {
             setMode(mode);
         }
     }, []);
+
     return <ColorContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme/>
@@ -64,19 +64,19 @@ function CustomTheme() {
             <App/>
             <BrowserRouter>
                 <Routes>
-                    <Route exact path="/" element={<RouteService Component={Home}/>}>Accueil</Route>
-                    <Route exact path="login" element={<RouteService Component={Login}/>}>Login</Route>
-                    <Route exact path="register" element={<RouteService Component={Register}/>}>Inscription</Route>
-                    <Route exact path="logout" element={<RouteService Component={Logout}/>}>Logout</Route>
-                    <Route exact path="brand" element={<RouteService Component={Brand}/>}>Marque</Route>
-                    <Route exact path="category" element={<RouteService Component={Category}/>}>Categorie</Route>
-                    <Route exact path="denomination" element={<RouteService Component={Denomination}/>}>Denomination</Route>
-                    <Route exact path="package" element={<RouteService Component={Package}/>}>Package</Route>
-                    <Route exact path="image" element={<RouteService Component={Image}/>}>Image</Route>
-                    <Route exact path="annonce" element={<RouteService Component={Annonce}/>}>Annonce</Route>
-                    <Route exact path="address" element={<RouteService Component={Address}/>}>Adresse</Route>
-                    <Route exact path="annonce/:id" element={<RouteService Component={OneAnnonce}/>}>OneAnnonce</Route>
-                    <Route exact path="user" element={<RouteService Component={User}/>}>User</Route>
+                    <Route exact path="/" element={<Home/>}>Accueil</Route>
+                    <Route exact path="login" element={auth.getToken() ? <Home adminMessage='alreadyLogged'/> : <Login/> }>Login</Route>
+                    <Route exact path="register" element={<Register/>}>Inscription</Route>
+                    <Route exact path="logout" element={<Logout/>}>Logout</Route>
+                    <Route exact path="annonce/:id" element={<OneAnnonce/>}>OneAnnonce</Route>
+                    <Route exact path="brand" element={auth.loggedAndAdmin() ? <Brand/> : <Home adminMessage='unauthorizedRole'/> }>Marque</Route>
+                    <Route exact path="category" element={auth.loggedAndAdmin() ? <Category/> : <Home  adminMessage='unauthorizedRole'/>}>Categorie</Route>
+                    <Route exact path="denomination" element={auth.loggedAndAdmin() ? <Denomination/> : <Home adminMessage='unauthorizedRole'/>}>Denomination</Route>
+                    <Route exact path="package" element={auth.loggedAndAdmin() ? <Package/> : <Home  adminMessage='unauthorizedRole'/>}>Package</Route>
+                    <Route exact path="image" element={auth.loggedAndAdmin() ? <Image/> : <Home  adminMessage='unauthorizedRole'/>}>Image</Route>
+                    <Route exact path="annonce" element={auth.loggedAndAdmin() ? <Annonce/> : <Home  adminMessage='unauthorizedRole'/>}>Annonce</Route>
+                    <Route exact path="address" element={auth.loggedAndAdmin() ? <Address/> : <Home  adminMessage='unauthorizedRole'/>}>Adresse</Route>
+                    <Route exact path="user" element={auth.loggedAndAdmin() ? <User/> : <Home  adminMessage='unauthorizedRole'/>}>Utilisateur</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>
