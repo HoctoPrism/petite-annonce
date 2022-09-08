@@ -4,9 +4,7 @@ import Grid from "@mui/material/Grid";
 import axios from "axios";
 import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { loggedTrue } from "../../component/features/loginButton/loginButtonSlice";
 
 function Login() {
   document.title = "Connexion au site";
@@ -14,7 +12,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState("");
-  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -23,11 +20,9 @@ function Login() {
     formState: { errors },
   } = useForm({ defaultValues: { email: "", password: "" } });
   const [toast, setShowToast] = useState(false);
-    const [toastMessage, setToastMessage] = useState({});
+  const [toastMessage, setToastMessage] = useState({});
+  const navigate = useNavigate();
 
-  let navigate = useNavigate();
-  let location = useLocation();
-  let from = location.pathname || "/"; //travail sur la redirection
   let login = async () => {
 
     try {
@@ -39,9 +34,7 @@ function Login() {
       });
       if (res.status === 200) {
           localStorage.setItem("access_token", res.data.token)
-    
-          dispatch(loggedTrue());
-          navigate('/', { replace: true });
+          navigate(-1);
       } else {
         setToastMessage({message: "Une erreur est survenue", severity: "error"});
         setShowToast(true);
@@ -92,7 +85,7 @@ const handleClickShowPassword = () => {
         </Button>
       </Box>
       {errMessage ? <h4>{errMessage}</h4> : null}
-        <form onSubmit={handleSubmit(login)}>
+        <form onSubmit={handleSubmit(login)} onKeyDown={(e) => e.key === 'Enter' ? handleSubmit(login) : null}>
           <Grid
             container
             spacing={12}
