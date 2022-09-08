@@ -53,21 +53,7 @@ function EditAnnonce(props) {
     } });
 
     useEffect( () => {
-        getAlls()
     }, [])
-
-    let getAlls = async () => {
-        try {
-            await axios.get("http://127.0.0.1:8000/api/packages").then((actualData) => { setPackages(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/categories").then((actualData) => { setCategories(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/brands").then((actualData) => { setBrands(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/users", {
-                "headers" : { "Authorization":"Bearer"+localStorage.getItem('access_token') }
-            }).then((actualData) => { setUsers(actualData.data.data) });
-        } catch(err) {
-            console.log(err)
-        }
-    }
 
     let editAnnonceForm = async () => {
         try {
@@ -105,7 +91,13 @@ function EditAnnonce(props) {
 
     return(<Box >
           <Button color='info' variant='contained' sx={{mx: 2}}
-            onClick={() => {
+            onClick={ async () => {
+                await axios.get("http://127.0.0.1:8000/api/packages").then((actualData) => { setPackages(actualData.data.data) });
+                await axios.get("http://127.0.0.1:8000/api/categories").then((actualData) => { setCategories(actualData.data.data) });
+                await axios.get("http://127.0.0.1:8000/api/brands").then((actualData) => { setBrands(actualData.data.data) });
+                await axios.get("http://127.0.0.1:8000/api/users", {
+                    "headers" : { "Authorization":"Bearer"+localStorage.getItem('access_token') }
+                }).then((actualData) => { setUsers(actualData.data.data) });
                 setShowEdit(true)
                 setOneAnnonce({id: props.updateValue.id, name_annonce: props.updateValue.name_annonce})
             }}>

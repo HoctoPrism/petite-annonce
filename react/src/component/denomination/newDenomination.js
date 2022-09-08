@@ -32,16 +32,11 @@ function NewDenomination(props) {
             }});
 
     useEffect( () => {
-        getCategories()
     }, [])
 
     let reset = () => {
         setName('');
         setCategory('');
-    }
-
-    let getCategories = async () => {
-        await axios.get("http://127.0.0.1:8000/api/categories/").then((actualData) => { setCategories(actualData.data.data) });
     }
 
 
@@ -68,7 +63,10 @@ function NewDenomination(props) {
 
 
     return (<Box>
-        <Button variant="contained" onClick={() => setShowNew(true)}>Ajouter</Button>
+        <Button variant="contained" onClick={ async () => {
+            await axios.get("http://127.0.0.1:8000/api/categories/").then((actualData) => { setCategories(actualData.data.data) });
+            setShowNew(true)
+        }}>Ajouter</Button>
         <Modal
             id="modal-denomination-container"
             hideBackdrop

@@ -29,12 +29,7 @@ function NewImage(props) {
     const { register, control, handleSubmit, formState: { errors } } = useForm({defaultValues: {url: ''}});
 
     useEffect( () => {
-        getAlls()
     }, [])
-
-    let getAlls = async () => {
-        await axios.get("http://127.0.0.1:8000/api/annonces/").then((actualData) => { setAnnonces(actualData.data.data) });
-    }
 
     let newImageForm = async () => {
         try {
@@ -62,7 +57,10 @@ function NewImage(props) {
     }
 
     return (<Box>
-        <Button variant="contained" onClick={() => setShowNew(true)}>Ajouter</Button>
+        <Button variant="contained" onClick={ async () => {
+            await axios.get("http://127.0.0.1:8000/api/annonces/").then((actualData) => { setAnnonces(actualData.data.data) });
+            setShowNew(true)
+        }}>Ajouter</Button>
         <Modal
             id="modal-image-container"
             hideBackdrop

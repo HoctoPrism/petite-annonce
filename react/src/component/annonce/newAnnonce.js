@@ -52,21 +52,8 @@ function NewAnnonce(props) {
     }});
 
     useEffect( () => {
-        getAlls()
     }, [])
 
-    let getAlls = async () => {
-        try {
-            await axios.get("http://127.0.0.1:8000/api/packages").then((actualData) => { setPackages(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/categories").then((actualData) => { setCategories(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/brands").then((actualData) => { setBrands(actualData.data.data) });
-            await axios.get("http://127.0.0.1:8000/api/users", {
-                "headers" : { "Authorization":"Bearer"+localStorage.getItem('access_token') }
-            }).then((actualData) => { setUsers(actualData.data.data) });
-        } catch(err) {
-            console.log(err)
-        }
-    }
 
     let reset = () => {
         setNameAnnonce('');
@@ -115,7 +102,15 @@ function NewAnnonce(props) {
     }
 
     return (<Box>
-        <Button variant="contained" onClick={() => setShowNew(true)}>Ajouter</Button>
+        <Button variant="contained" onClick={ async () => {
+            await axios.get("http://127.0.0.1:8000/api/packages").then((actualData) => { setPackages(actualData.data.data) });
+            await axios.get("http://127.0.0.1:8000/api/categories").then((actualData) => { setCategories(actualData.data.data) });
+            await axios.get("http://127.0.0.1:8000/api/brands").then((actualData) => { setBrands(actualData.data.data) });
+            await axios.get("http://127.0.0.1:8000/api/users", {
+                "headers" : { "Authorization":"Bearer"+localStorage.getItem('access_token') }
+            }).then((actualData) => { setUsers(actualData.data.data) });
+            setShowNew(true)
+        }}>Ajouter</Button>
         <Modal
             id="modal-annonce-container"
             hideBackdrop

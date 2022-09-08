@@ -33,12 +33,7 @@ function EditDenomination(props) {
             }});
 
     useEffect( () => {
-        getCategories();
     }, [])
-
-    let getCategories = async () => {
-        await axios.get("http://127.0.0.1:8000/api/categories/").then((actualData) => { setCategories(actualData.data.data) });
-    }
 
     let editDenominationForm = async () => {
         try {
@@ -63,7 +58,8 @@ function EditDenomination(props) {
     }
     return(<Box >
           <Button color='info' variant='contained' sx={{mx: 2}}
-            onClick={() => {
+            onClick={ async () => {
+                await axios.get("http://127.0.0.1:8000/api/categories/").then((actualData) => { setCategories(actualData.data.data) });
                 setShowEdit(true)
                 setOneDenomination({id: props.updateValue.id, name_denomination: props.updateValue.name_denomination , category: props.updateValue.category})
             }}>

@@ -30,12 +30,7 @@ function EditImage(props) {
     const { register, control, handleSubmit, formState: { errors } } = useForm({ defaultValues: {url: props.updateValue.url, annonce_id: props.updateValue.annonce} });
 
     useEffect( () => {
-        getAlls()
     }, [])
-
-    let getAlls = async () => {
-        await axios.get("http://127.0.0.1:8000/api/annonces/").then((actualData) => { setAnnonces(actualData.data.data) });
-    }
 
     let editImageForm = async () => {
         try {
@@ -67,7 +62,8 @@ function EditImage(props) {
 
     return(<Box >
           <Button color='info' variant='contained' sx={{mx: 2}}
-            onClick={() => {
+            onClick={ async () => {
+                await axios.get("http://127.0.0.1:8000/api/annonces/").then((actualData) => { setAnnonces(actualData.data.data) });
                 setShowEdit(true)
                 setOneImage({id: props.updateValue.id, url: props.updateValue.url, annonce_id: props.updateValue.annonce})
                 setCurrentImage(props.updateValue.url);

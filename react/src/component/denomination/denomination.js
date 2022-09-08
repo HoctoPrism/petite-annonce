@@ -45,7 +45,6 @@ function Denomination() {
         axios.get('http://127.0.0.1:8000/api/denominations').then((actualData) => {
             actualData = actualData.data;
             setLoading(true)
-            console.log(actualData)
             setData(actualData.data);
             setError(null);
         }).catch((err) => {
