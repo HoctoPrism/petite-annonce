@@ -4,9 +4,7 @@ import Grid from "@mui/material/Grid";
 import axios from "axios";
 import React, { useState } from 'react';
 import { Controller, useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
-import { loggedTrue } from "../../component/features/loginButton/loginButtonSlice";
 
 function Login() {
   document.title = "Connexion au site";
@@ -14,7 +12,6 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMessage, setErrMessage] = useState("");
-  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const {
     register,
@@ -39,8 +36,6 @@ function Login() {
       });
       if (res.status === 200) {
           localStorage.setItem("access_token", res.data.token)
-    
-          dispatch(loggedTrue());
           navigate('/', { replace: true });
       } else {
         setToastMessage({message: "Une erreur est survenue", severity: "error"});

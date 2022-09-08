@@ -5,9 +5,6 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 import './assets/css/component/_partials/_theme.scss';
 
-import {Provider} from 'react-redux';
-import store from './store'
-
 import auth from './services/auth/token'
 import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 
@@ -57,8 +54,6 @@ function CustomTheme() {
         }
     }, []);
 
-    let loggedAndAdmin = auth.getToken() && auth.getRoles() === 'ROLE_ADMIN';
-
     return <ColorContext.Provider value={colorMode}>
         <ThemeProvider theme={theme}>
             <CssBaseline enableColorScheme/>
@@ -70,12 +65,12 @@ function CustomTheme() {
                     <Route exact path="login" element={auth.getToken() ? <Home adminMessage='alreadyLogged'/> : <Login/> }>Login</Route>
                     <Route exact path="register" element={<Register/>}>Inscription</Route>
                     <Route exact path="logout" element={<Logout/>}>Logout</Route>
-                    <Route exact path="brand" element={loggedAndAdmin ? <Brand/> : <Home adminMessage='unauthorizedRole'/> }>Marque</Route>
-                    <Route exact path="category" element={loggedAndAdmin ? <Category/> : <Home  adminMessage='unauthorizedRole'/>}>Categorie</Route>
-                    <Route exact path="denomination" element={loggedAndAdmin ? <Denomination/> : <Home adminMessage='unauthorizedRole'/>}>Denomination</Route>
-                    <Route exact path="package" element={loggedAndAdmin ? <Package/> : <Home  adminMessage='unauthorizedRole'/>}>Package</Route>
-                    <Route exact path="image" element={loggedAndAdmin ? <Image/> : <Home  adminMessage='unauthorizedRole'/>}>Image</Route>
-                    <Route exact path="annonce" element={loggedAndAdmin ? <Annonce/> : <Home  adminMessage='unauthorizedRole'/>}>Annonce</Route>
+                    <Route exact path="brand" element={auth.loggedAndAdmin() ? <Brand/> : <Home adminMessage='unauthorizedRole'/> }>Marque</Route>
+                    <Route exact path="category" element={auth.loggedAndAdmin() ? <Category/> : <Home  adminMessage='unauthorizedRole'/>}>Categorie</Route>
+                    <Route exact path="denomination" element={auth.loggedAndAdmin() ? <Denomination/> : <Home adminMessage='unauthorizedRole'/>}>Denomination</Route>
+                    <Route exact path="package" element={auth.loggedAndAdmin() ? <Package/> : <Home  adminMessage='unauthorizedRole'/>}>Package</Route>
+                    <Route exact path="image" element={auth.loggedAndAdmin() ? <Image/> : <Home  adminMessage='unauthorizedRole'/>}>Image</Route>
+                    <Route exact path="annonce" element={auth.loggedAndAdmin() ? <Annonce/> : <Home  adminMessage='unauthorizedRole'/>}>Annonce</Route>
                     <Route path="*" element={
                         <div>
                             <p>Il n'y a rien ici !</p>
@@ -92,9 +87,7 @@ function CustomTheme() {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <Provider store={store}>
-            <CustomTheme/>
-        </Provider>
+        <CustomTheme/>
     </React.StrictMode>
 );
 
