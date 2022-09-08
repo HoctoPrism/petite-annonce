@@ -28,6 +28,7 @@ import Denomination from "./component/denomination/denomination";
 import Annonce from "./component/annonce/annonce";
 import Address from "./component/addresses/address";
 import User from "./component/Users/user";
+import OneAnnonce from "./component/annonce/oneAnnonce";
 
 function CustomTheme() {
 
@@ -67,6 +68,7 @@ function CustomTheme() {
                     <Route exact path="login" element={auth.getToken() ? <Home adminMessage='alreadyLogged'/> : <Login/> }>Login</Route>
                     <Route exact path="register" element={<Register/>}>Inscription</Route>
                     <Route exact path="logout" element={<Logout/>}>Logout</Route>
+                    <Route exact path="annonce/:id" element={<OneAnnonce/>}>OneAnnonce</Route>
                     <Route exact path="brand" element={auth.loggedAndAdmin() ? <Brand/> : <Home adminMessage='unauthorizedRole'/> }>Marque</Route>
                     <Route exact path="category" element={auth.loggedAndAdmin() ? <Category/> : <Home  adminMessage='unauthorizedRole'/>}>Categorie</Route>
                     <Route exact path="denomination" element={auth.loggedAndAdmin() ? <Denomination/> : <Home adminMessage='unauthorizedRole'/>}>Denomination</Route>
