@@ -19,7 +19,10 @@ class AddressController extends Controller
         $addresses->map(function ($address){
             unset($address['user_id']);
         });
-        return response()->json($addresses);
+        return response()->json([
+            'status' => 'Success',
+            'data' => $addresses
+        ]);
     }
 
     /**
@@ -45,7 +48,10 @@ class AddressController extends Controller
             'country' => $request->country,
             'phone' => $request->phone,
             'user_id' => $request->user_id,
+
         ]);
+        $address->user = $address->user()->get()[0];
+
         // On retourne les informations du nouvel utilisateur en JSON
         return response()->json([
             'status' => 'Success',
@@ -92,9 +98,13 @@ class AddressController extends Controller
             'user_id' => $request->user_id,
         ]);
         // On retourne les informations du nouvel utilisateur en JSON
+        $address->user = $address->user()->get()[0];
+
         return response()->json([
-            'status' => 'Mise à jour avec succèss'
+            'status' => 'Success',
+            'data' => $address
         ]);
+
     }
 
     /**
